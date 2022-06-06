@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/chimeiquiz/static/css/main.09793545.css",
-    "main.js": "/chimeiquiz/static/js/main.97cf9028.js",
+    "main.js": "/chimeiquiz/static/js/main.8dc0cda2.js",
     "static/js/787.c1afd47b.chunk.js": "/chimeiquiz/static/js/787.c1afd47b.chunk.js",
     "index.html": "/chimeiquiz/index.html",
     "main.09793545.css.map": "/chimeiquiz/static/css/main.09793545.css.map",
-    "main.97cf9028.js.map": "/chimeiquiz/static/js/main.97cf9028.js.map",
+    "main.8dc0cda2.js.map": "/chimeiquiz/static/js/main.8dc0cda2.js.map",
     "787.c1afd47b.chunk.js.map": "/chimeiquiz/static/js/787.c1afd47b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.09793545.css",
-    "static/js/main.97cf9028.js"
+    "static/js/main.8dc0cda2.js"
   ]
 }
