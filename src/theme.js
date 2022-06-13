@@ -6,7 +6,8 @@ const theme = createTheme({
             fontFamily: [
                 'ヒラギノ明朝 ProN', 
                 'Hiragino Mincho ProN', 
-                '游明朝','游明朝体',
+                '游明朝',
+                '游明朝体',
                 'YuMincho',
                 'Yu Mincho', 
                 'ＭＳ 明朝',

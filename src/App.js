@@ -1,5 +1,6 @@
 import React from 'react';
-import Quiz from './Quiz.js'
+import QuizRandom from './QuizRandom'
+import QuizChallenge from './QuizChallenge'
 import { useState } from 'react'
 import {
   Button, Typography, ThemeProvider
@@ -8,21 +9,14 @@ import {
   ToggleButtonGroup, ToggleButton
 } from '@mui/material'
 
-import CssBaseline from "@material-ui/core/CssBaseline";
+import Header from './components/Header.js';
+
 import theme from './theme';
 
-const Header = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-        <center>
-        <Typography variant="h3">邑南町の地名 <br></br> クイズ</Typography>
-        <br></br>
-        <Typography variant="h5">未完成のデモンストレーション版</Typography>
-        </center>
-        <br></br>
-    </ThemeProvider>
-  )
+const QuizComponent = (props) => {
+  if (props.mode === 'challenge') {
+    return <div> <QuizChallenge /> </div>
+  } else return <div> <QuizRandom /> </div>
 }
 
 const App = () => {
@@ -40,8 +34,8 @@ const App = () => {
   ]
 
   const handleChange = (event, newAlignment) => {
+    event.preventDefault();
     setGameMode(newAlignment);
-    console.log(gameMode)
   }
 
   const control = {
@@ -51,8 +45,12 @@ const App = () => {
   }
 
   const startQuiz = () => {
-    if ((gameMode === 'challenge') || (gameMode === 'random')) {
-      setQuiz(true)
+    if ((gameMode === 'challenge')) {
+      setQuiz('challenge')
+      setError(false)
+    }
+    else if ((gameMode === 'random')) {
+      setQuiz('random')
       setError(false)
     }
     else {
@@ -60,13 +58,13 @@ const App = () => {
     }
   }
 
-  if (quiz === true) {
+  if (quiz) {
     return (
       <div>
       <center>
       <ThemeProvider theme={theme}>
       <Header/>
-      <Quiz mode={gameMode}/>
+      <QuizComponent mode={quiz}/>
       <p></p>
       <Button         
         variant="contained" 
@@ -108,7 +106,6 @@ const App = () => {
     </ThemeProvider>
     </div>
   );
-  
 };
 
 export default App;

@@ -2,14 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import chimeiNonrandom from './ChimeiList'
 import theme from './theme';
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
 
-import {
-  Button, Typography, ThemeProvider, TextField,
-} from '@material-ui/core'
+import AnswerScreen from './components/AnswerScreen';
+import FinalScreen from './components/FinalScreen';
+import Scores from './components/Scores'
 
-import { Send, Check, CheckCircle, Cancel } from '@mui/icons-material'
+import { Button, Typography, ThemeProvider, TextField } from '@material-ui/core'
+import { Send } from '@mui/icons-material'
 
 const chimei = chimeiNonrandom.sort(()=> Math.random() - 0.5)
 
@@ -20,62 +19,9 @@ const WrongAnswer = (props) => {
   else return null
 }
 
-const AnswerScreen = (props) => {
-  return (
-    <div>
-    <center>
-    <ThemeProvider theme={theme}>
-      <Typography variant="h5" style={{display: props.show === 'right' ? 'block' : 'none' }}>正解です <Check color='warning'></Check></Typography>
-      <Typography variant="subtitle1">{props.previous.kanji} ({props.previous.kana})</Typography>
-      <Typography variant="h6">{props.previous.area}地域</Typography>
-    </ThemeProvider>
-      <p></p>
-      <Zoom><img src={props.previous.img.src} style={{ width:500 }} alt={props.previous.img.alt}></img></Zoom>
-      <br></br>
-      <Zoom><img src={props.previous.map.src} style={{ width:500 }} alt={props.previous.map.alt}></img></Zoom>
-      {/*<Typography variant="h6">写真：{props.previous.img.alt}</Typography>*/}
-      <br></br>
-    </center>
-    </div>
-  )
-}
+const QuizRandom = (props) => {
 
-const FinalScreen = (props) => {
-  return (
-    <div>
-    <ThemeProvider theme={theme}>
-    <Typography variant='h2'>
-      おつかれさまです
-    </Typography>
-    <Typography variant='h5'>
-      正答 {props.correctCount}
-      <br></br>
-      正答率 {Math.floor((props.correctCount/chimei.length)*100)}%
-    </Typography>
-    </ThemeProvider>
-    </div>
-  )
-}
-
-const Scores = (props) => {
-  return (
-    <div>
-    <ThemeProvider theme={theme}>
-    <Typography color='primary'>
-    <CheckCircle /> {props.correctCount}
-    </Typography>
-    <Typography color='secondary'>
-    <Cancel /> {props.wrongCount}
-    </Typography>
-    </ThemeProvider>
-    </div>
-  )
-}
-const Quiz = (props) => {
-
-  console.log("mode is " + props.mode)
-  const startValue = props.mode === 'challenge' ? 0 : Math.floor(Math.random()*chimei.length)
-  const [ placeName, setPlaceName ] = useState(startValue)
+  const [ placeName, setPlaceName ] = useState(0)
   const [ previousName, setPreviousName ] = useState('')
   const [ answer, setAnswer ] = useState('')
   const [ answerCheck, setAnswerCheck ] = useState('')
@@ -93,11 +39,7 @@ const Quiz = (props) => {
     setWrongAnswers(0)
     setAnswer('')
     setPreviousName(chimei[placeName])
-    if (props.mode === 'random') {
-      setPlaceName(Math.floor(Math.random()*chimei.length))
-    } else {
-      setPlaceName(placeName+1)
-    }
+    setPlaceName(Math.floor(Math.random()*chimei.length))
   }
 
   const checkAnswer = (e) => {
@@ -107,7 +49,6 @@ const Quiz = (props) => {
           correctCount: answerArray.correctCount+1,
           wrongCount: answerArray.wrongCount
         })
-        console.log('wrong: ' + answerArray.wrongCount + ' right: ' + answerArray.correctCount )
         prepareNextQuestion()
       }
       else {
@@ -150,7 +91,6 @@ const Quiz = (props) => {
   }
 
   if (answerCheck === 'right' || answerCheck === 'show' ) {
-    console.log('wrong: ' + answerArray.wrongCount + ' right: ' + answerArray.correctCount )
     return (
     <center>
       <Scores correctCount={answerArray.correctCount} wrongCount={answerArray.wrongCount}/>
@@ -170,10 +110,9 @@ const Quiz = (props) => {
     </center>
     )
   }
-
   return (
     <center>
-    <Scores correctCount={answerArray.correctCount} wrongCount={answerArray.wrongCount}/>
+    <Scores correctCount={answerArray.correctCount} wrongCount={answerArray.wrongCount} mode='random' />
     <div style={{width: "50%"}}>
     <ThemeProvider theme={theme}>
       <Typography variant="subtitle1">{chimei[placeName].kanji}</Typography>
@@ -210,4 +149,4 @@ const Quiz = (props) => {
     );
 };
 
-export default Quiz;
+export default QuizRandom;
