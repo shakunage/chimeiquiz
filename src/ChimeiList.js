@@ -92,7 +92,7 @@ export const chimei = [
             },
             {
             kanji: "宇都井", 
-            kana: "うずい",
+            kana: "うづい",
             area: "羽須美",
             img: {
                 alt: "旧宇都井駅",
