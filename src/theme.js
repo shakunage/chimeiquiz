@@ -22,10 +22,10 @@ const theme = createTheme({
             default: "#f8f1db"
         },
         primary: {
-            main:'#7cd1cd'
+            main:'#b20000'
         },
         secondary: {
-            main: '#b20000'
+            main: '#7cd1cd'
         },
         warning: {
             main: '#b20000'
