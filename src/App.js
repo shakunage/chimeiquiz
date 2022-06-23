@@ -1,6 +1,7 @@
 import React from 'react';
 import QuizRandom from './QuizRandom'
 import QuizChallenge from './QuizChallenge'
+import About from './components/About';
 import { useState } from 'react'
 import {
   Button, Typography, ThemeProvider
@@ -23,6 +24,7 @@ const App = () => {
   const [quiz, setQuiz] = useState(false)
   const [gameMode, setGameMode] = useState("challenge")
   const [error, setError] = useState(false)
+  const [about, setAbout] = useState(false)
 
   const children = [
     <ToggleButton value="challenge" key="challenge">
@@ -79,6 +81,25 @@ const App = () => {
     )
   }
 
+  if (about) {
+    return (
+    <div>
+      <About/>
+      <ThemeProvider theme={theme}>
+      <center>
+      <p></p>
+      <Button         
+        variant="contained" 
+        avariant="text" 
+        color='secondary' 
+        size="large"
+        onClick={() => setAbout(false)}>戻る</Button>
+        </center>
+      </ThemeProvider>
+    </div>
+    )
+  }
+
   return (
     <div>
       <Header/>
@@ -101,6 +122,12 @@ const App = () => {
         <h1>開始</h1>
         </Button>
         <p></p>
+        <Button 
+        variant="contained"
+        size="small"
+        onClick={() => setAbout(true)}>
+        <h5>クイズについて</h5>
+        </Button>
         <Typography style={{display: error ? 'block' : 'none' }} color="secondary">ゲームモードを選択してください</Typography>
         </center>
     </ThemeProvider>

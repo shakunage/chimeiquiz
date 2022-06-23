@@ -4,7 +4,7 @@ export const chimei = [
             kana: "あすな",
             area: "羽須美",
             img: {
-                alt: "阿須那の街並み",
+                alt: "池月酒造",
                 src: "/chimeiquiz/images/asuna.jpg"
             },
             map: {
@@ -121,7 +121,7 @@ export const chimei = [
             kana: "かみかめだに",
             area: "瑞穂",
             img: {
-                alt: "亀谷山八幡宮",
+                alt: "ハンザケ自然館",
                 src: "/chimeiquiz/images/kamikamedani.jpg"
             },
             map: {
@@ -147,7 +147,7 @@ export const chimei = [
             kana: "かみたどころ",
             area: "瑞穂",
             img: {
-                alt: "カフェこめじるし",
+                alt: "",
                 src: "/chimeiquiz/images/kamitadokoro.jpg"
             },
             map: {
@@ -212,7 +212,7 @@ export const chimei = [
             kana: "しもかめだに",
             area: "瑞穂",
             img: {
-                alt: "邑南町郷土館",
+                alt: "亀谷山八幡神社",
                 src: "/chimeiquiz/images/shimokamedani.jpg"
             },
             map: {
@@ -238,7 +238,7 @@ export const chimei = [
             kana: "しもたどころ",
             area: "瑞穂",
             img: {
-                alt: "",
+                alt: "道の駅瑞穂",
                 src: "/chimeiquiz/images/shimotadokoro.jpg"
             },
             map: {
